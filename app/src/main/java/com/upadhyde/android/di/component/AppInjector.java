@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
 import com.upadhyde.android.SampleApplication;
-import com.upadhyde.android.base.InjectableFragment;
+import com.upadhyde.android.base.fragmnet.InjectableFragment;
 
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;

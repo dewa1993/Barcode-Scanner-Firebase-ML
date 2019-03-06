@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android</string>
+    <string name="base_url">www.example.com</string>
 </resources>
