@@ -7,13 +7,14 @@ import com.upadhyde.android.di.component.ApplicationScope;
 import com.upadhyde.android.network.LiveDataCallAdapterFactory;
 import com.upadhyde.android.network.NetworkService;
 import com.upadhyde.android.utils.SharedPreferenceHelper;
+import com.upadhyde.android.viewmodel.main.DashboardFragmentViewModel;
 
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@Module(includes = ViewModelModule.class)
+@Module(includes = {ViewModelModule.class})
 public class ApplicationModule {
 
     /*
