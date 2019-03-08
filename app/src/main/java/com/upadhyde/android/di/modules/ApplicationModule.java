@@ -1,8 +1,11 @@
 package com.upadhyde.android.di.modules;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 
 import com.upadhyde.android.R;
+import com.upadhyde.android.db.AppDatabase;
+import com.upadhyde.android.db.dao.ScannerDao;
 import com.upadhyde.android.di.component.ApplicationScope;
 import com.upadhyde.android.network.LiveDataCallAdapterFactory;
 import com.upadhyde.android.network.NetworkService;
@@ -20,15 +23,14 @@ public class ApplicationModule {
     /*
     * Room Database provider
     */
-//    @ApplicationScope
-//    @Provides
-//    AppDatabase provideDatabase(Application application) {
-//        return Room.databaseBuilder(application, AppDatabase.class, "AppDatabase")
-//                .build();
-//    }
+    @ApplicationScope
+    @Provides
+    AppDatabase provideDatabase(Application application) {
+        return Room.databaseBuilder(application, AppDatabase.class, "AppDatabase")
+                .build();
+    }
 
     /* OkHttp provider */
-
     @ApplicationScope
     @Provides
     NetworkService provideNetworkService(Application application) {
@@ -47,11 +49,10 @@ public class ApplicationModule {
     }
 
     /* Dao */
-
-//    @ApplicationScope
-//    @Provides
-//    RdoManagerDao provideRdoManagerDao(AppDatabase appDatabase) {
-//        return appDatabase.provideRdoManagerDao();
-//    }
+    @ApplicationScope
+    @Provides
+    ScannerDao provideRdoManagerDao(AppDatabase appDatabase) {
+        return appDatabase.provideScannerDao();
+    }
 
 }
