@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "589077182551",
+    "firebase_url": "https://scannerproject-b9cab.firebaseio.com",
+    "project_id": "scannerproject-b9cab",
+    "storage_bucket": "scannerproject-b9cab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589077182551:android:1161f584e5db0321",
+        "android_client_info": {
+          "package_name": "com.upadhyde.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589077182551-9tof7dhjkg4o0psc66ftefhrjh0po71m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk2dCWIA4w0Y0gbW6u74cE8_plMCfbLcI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

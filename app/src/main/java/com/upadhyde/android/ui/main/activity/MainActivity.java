@@ -3,6 +3,7 @@ package com.upadhyde.android.ui.main.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.google.firebase.FirebaseApp;
 import com.upadhyde.android.R;
 import com.upadhyde.android.base.activity.AbstractBaseMainActivity;
 import com.upadhyde.android.base.activity.AbstractBaseNormalActivity;

@@ -11,12 +11,14 @@ import com.upadhyde.android.db.Input;
 
 import java.util.List;
 
-public class InputListRecyclerAdapter extends RecyclerView.Adapter<InputListRecyclerAdapter.InputListRecyclerViewHolder>{
+public class InputListRecyclerAdapter extends RecyclerView.Adapter<InputListRecyclerAdapter.InputListRecyclerViewHolder> {
 
     private List<Input> inputs;
+    private InputItemClick inputItemClick;
 
-    public InputListRecyclerAdapter (List<Input> inputList){
+    public InputListRecyclerAdapter(List<Input> inputList, InputItemClick inputItemClick) {
         this.inputs = inputList;
+        this.inputItemClick = inputItemClick;
     }
 
 
@@ -48,7 +50,7 @@ public class InputListRecyclerAdapter extends RecyclerView.Adapter<InputListRecy
 
         AdapterInputListBinding adapterInputListBinding;
 
-        InputListRecyclerViewHolder(AdapterInputListBinding adapterInputListBinding){
+        InputListRecyclerViewHolder(AdapterInputListBinding adapterInputListBinding) {
             super(adapterInputListBinding.getRoot());
             this.adapterInputListBinding = adapterInputListBinding;
             itemView.setOnClickListener(this);
@@ -56,8 +58,12 @@ public class InputListRecyclerAdapter extends RecyclerView.Adapter<InputListRecy
 
         @Override
         public void onClick(View v) {
-
+            inputItemClick.itemClick();
         }
+    }
+
+    public interface InputItemClick {
+        void itemClick();
     }
 
 }

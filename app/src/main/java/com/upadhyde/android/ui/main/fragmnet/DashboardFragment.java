@@ -16,10 +16,12 @@ import com.upadhyde.android.repository.helper.StatusConstant;
 import com.upadhyde.android.ui.main.adapter.InputListRecyclerAdapter;
 import com.upadhyde.android.ui.main.contract.DashboardContract;
 import com.upadhyde.android.viewmodel.main.DashboardFragmentViewModel;
+
 import java.util.List;
 
 
-public class DashboardFragment extends AbstractBaseMainFragment<DashboardContract, DashboardFragmentViewModel, FragmnetDashboardBinding> {
+public class DashboardFragment extends AbstractBaseMainFragment<DashboardContract, DashboardFragmentViewModel, FragmnetDashboardBinding>
+        implements InputListRecyclerAdapter.InputItemClick {
 
 
     private static int STORAGE_PERMISSION_CODE = 1;
@@ -39,17 +41,17 @@ public class DashboardFragment extends AbstractBaseMainFragment<DashboardContrac
         return R.layout.fragmnet_dashboard;
     }
 
-    private void getReader(){
-       getViewModel().getInputList(INPUT_FILE_NAME).observe(this, listResourcesResponse -> {
-           if (listResourcesResponse != null && listResourcesResponse.status == StatusConstant.SUCCESS && listResourcesResponse.data != null) {
-               setView(listResourcesResponse.data);
-           }
-       });
+    private void getReader() {
+        getViewModel().getInputList(INPUT_FILE_NAME).observe(this, listResourcesResponse -> {
+            if (listResourcesResponse != null && listResourcesResponse.status == StatusConstant.SUCCESS && listResourcesResponse.data != null) {
+                setView(listResourcesResponse.data);
+            }
+        });
     }
 
-    private void setView(List<Input> viewList){
-        InputListRecyclerAdapter recyclerAdapter = new InputListRecyclerAdapter(viewList);
-        getBinding().rvInputList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false));
+    private void setView(List<Input> viewList) {
+        InputListRecyclerAdapter recyclerAdapter = new InputListRecyclerAdapter(viewList, this);
+        getBinding().rvInputList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         getBinding().rvInputList.setAdapter(recyclerAdapter);
     }
 
@@ -61,15 +63,19 @@ public class DashboardFragment extends AbstractBaseMainFragment<DashboardContrac
     }
 
     private void requestStoragePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                 android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     STORAGE_PERMISSION_CODE);
-        }else {
+        } else {
             getReader();
         }
+    }
 
+    @Override
+    public void itemClick() {
+        getUiInteraction().getNavigationController().navigateToScanner();
     }
 
     @Override
