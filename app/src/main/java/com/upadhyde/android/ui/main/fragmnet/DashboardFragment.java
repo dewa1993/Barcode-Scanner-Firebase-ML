@@ -3,24 +3,19 @@ package com.upadhyde.android.ui.main.fragmnet;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 import com.upadhyde.android.R;
 import com.upadhyde.android.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyde.android.databinding.FragmnetDashboardBinding;
 import com.upadhyde.android.db.Input;
 import com.upadhyde.android.repository.helper.StatusConstant;
+import com.upadhyde.android.ui.main.adapter.InputListRecyclerAdapter;
 import com.upadhyde.android.ui.main.contract.DashboardContract;
-import com.upadhyde.android.utils.ReaderUtils;
 import com.upadhyde.android.viewmodel.main.DashboardFragmentViewModel;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,7 +24,6 @@ public class DashboardFragment extends AbstractBaseMainFragment<DashboardContrac
 
     private static int STORAGE_PERMISSION_CODE = 1;
     private String INPUT_FILE_NAME = "IN_4704_010320191828.txt";
-
 
     public static DashboardFragment getInstance() {
         return new DashboardFragment();
@@ -48,14 +42,15 @@ public class DashboardFragment extends AbstractBaseMainFragment<DashboardContrac
     private void getReader(){
        getViewModel().getInputList(INPUT_FILE_NAME).observe(this, listResourcesResponse -> {
            if (listResourcesResponse != null && listResourcesResponse.status == StatusConstant.SUCCESS && listResourcesResponse.data != null) {
-               // do nothing
-               Toast.makeText(getContext(), "Aa gyi List -- " + listResourcesResponse.data.toString(), Toast.LENGTH_SHORT).show();
+               setView(listResourcesResponse.data);
            }
        });
     }
 
-    private void steView(List<Input> viewList){
-
+    private void setView(List<Input> viewList){
+        InputListRecyclerAdapter recyclerAdapter = new InputListRecyclerAdapter(viewList);
+        getBinding().rvInputList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false));
+        getBinding().rvInputList.setAdapter(recyclerAdapter);
     }
 
 
