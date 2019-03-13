@@ -26,6 +26,6 @@ public class MainActivity extends AbstractBaseNormalActivity implements Abstract
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        navigationController.navigateToDashboard();
+        navigationController.navigateToSplash();
     }
 }

@@ -14,8 +14,7 @@ public class ReaderUtils {
 
 
     public static String[] readFile(String fileName) {
-        File sdcard = Environment.getExternalStorageDirectory();
-        File file = new File(sdcard, fileName);
+        File file = new File(fileName);
         StringBuilder text = new StringBuilder();
 
         try {

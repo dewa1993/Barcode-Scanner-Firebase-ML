@@ -21,6 +21,7 @@ public class BarcodeScanner
         public static final int FOCUS_TAP_WITH_MARKER = 3;
 
         public static final String KEY_CAMERA_PERMISSION_GRANTED="CAMERA_PERMISSION_GRANTED";
+        public static final String INPUT_FILE_NAME = "INPUT_FILE";
 
     }
 
