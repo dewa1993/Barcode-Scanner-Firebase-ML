@@ -8,8 +8,6 @@ import com.upadhyde.android.db.dao.ScannerDao;
 import com.upadhyde.android.db.table.Output;
 import com.upadhyde.android.repository.helper.ResourcesResponse;
 import com.upadhyde.android.utils.AppExecutors;
-import com.upadhyde.android.utils.ReaderUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 

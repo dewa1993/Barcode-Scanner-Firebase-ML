@@ -35,6 +35,7 @@ import com.upadhyde.android.viewmodel.main.DashboardFragmentViewModel;
 
 import android.os.Vibrator;
 import android.widget.Toast;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,6 @@ public class ScannerFragment extends AbstractBaseMainFragment<DashboardContract,
     private List<String> scannedCode = new ArrayList<>();
     private CameraSource mCameraSource = null;
     private Input scannerInput;
-    private List<Output> initOutputList = new ArrayList<>();
     private OutputListRecyclerViewAdapter recyclerAdapter;
 
     public static ScannerFragment getInstance(Input data) {
@@ -100,7 +100,6 @@ public class ScannerFragment extends AbstractBaseMainFragment<DashboardContract,
     }
 
     private void setView(List<Output> viewList) {
-        initOutputList = viewList;
         recyclerAdapter = new OutputListRecyclerViewAdapter(viewList, scannerInput);
         getBinding().rvOutList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         getBinding().rvOutList.setAdapter(recyclerAdapter);
@@ -229,7 +228,7 @@ public class ScannerFragment extends AbstractBaseMainFragment<DashboardContract,
     }
 
     private void alreadyScanned() {
-//        Toast.makeText(getContext(), "Already Scanned", Toast.LENGTH_SHORT).show();
+        // TODO: 3/15/2019 need to show something
     }
 
     @SuppressLint("HandlerLeak")
