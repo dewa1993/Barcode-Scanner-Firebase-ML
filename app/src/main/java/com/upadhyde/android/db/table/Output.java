@@ -1,4 +1,4 @@
-package com.upadhyde.android.db;
+package com.upadhyde.android.db.table;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -10,6 +10,9 @@ public class Output {
 
     @NonNull
     @PrimaryKey
+    @ColumnInfo(name = "batchItemNo")
+    private long batchItemNo;
+
     @ColumnInfo(name = "plantId")
     private long plantId;
 
@@ -25,11 +28,8 @@ public class Output {
     @ColumnInfo(name = "materialNo")
     private long materialNo;
 
-    @ColumnInfo(name = "batchItemNo")
-    private long batchItemNo;
-
     @ColumnInfo(name = "fefoBatchNo")
-    private long fefoBatchNo;
+    private String fefoBatchNo;
 
     @ColumnInfo(name = "fefoPickedQuantity")
     private long fefoPickedQuantity;
@@ -58,6 +58,16 @@ public class Output {
     @ColumnInfo(name = "gtinNumber")
     private long gtinNumber;
 
+
+    public Output(long plantId, long deliveryNo, long materialNo, String fefoBatchNo, String actualBatch, long gtinNumber, long batchItemNo) {
+        this.plantId = plantId;
+        this.deliveryNo = deliveryNo;
+        this.materialNo = materialNo;
+        this.fefoBatchNo = fefoBatchNo;
+        this.actualBatch = actualBatch;
+        this.gtinNumber = gtinNumber;
+        this.batchItemNo = batchItemNo;
+    }
 
     public long getPlantId() {
         return plantId;
@@ -107,11 +117,11 @@ public class Output {
         this.batchItemNo = batchItemNo;
     }
 
-    public long getFefoBatchNo() {
+    public String getFefoBatchNo() {
         return fefoBatchNo;
     }
 
-    public void setFefoBatchNo(long fefoBatchNo) {
+    public void setFefoBatchNo(String fefoBatchNo) {
         this.fefoBatchNo = fefoBatchNo;
     }
 

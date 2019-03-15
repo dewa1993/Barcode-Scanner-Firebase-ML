@@ -5,15 +5,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.upadhyde.android.R;
 import com.upadhyde.android.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyde.android.databinding.FragmnetDashboardBinding;
-import com.upadhyde.android.db.Input;
+import com.upadhyde.android.db.table.Input;
 import com.upadhyde.android.repository.helper.StatusConstant;
 import com.upadhyde.android.ui.main.adapter.InputListRecyclerAdapter;
 import com.upadhyde.android.ui.main.contract.DashboardContract;
 import com.upadhyde.android.utils.SharedPreferenceHelper;
 import com.upadhyde.android.viewmodel.main.DashboardFragmentViewModel;
-
 import java.util.List;
-
 import javax.inject.Inject;
 
 import static com.upadhyde.android.barcodescannerutil.BarcodeScanner.Constants.INPUT_FILE_NAME;
@@ -58,8 +56,8 @@ public class DashboardFragment extends AbstractBaseMainFragment<DashboardContrac
     }
 
     @Override
-    public void itemClick() {
-        getUiInteraction().getNavigationController().navigateToScanner();
+    public void itemClick(Input input) {
+        getUiInteraction().getNavigationController().navigateToScanner(input);
     }
 
 }

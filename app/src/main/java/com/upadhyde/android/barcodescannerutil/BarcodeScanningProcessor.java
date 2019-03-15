@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.upadhyde.android.barcodescannerutil.common.CameraImageGraphic;
 import com.upadhyde.android.barcodescannerutil.common.FrameMetadata;
@@ -28,12 +29,11 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
     BarcodeResultListener barcodeResultListener;
 
     public BarcodeScanningProcessor() {
-        // Note that if you know which format of barcode your app is dealing with, detection will be
-        // faster to specify the supported barcode formats one by one, e.g.
-        // new FirebaseVisionBarcodeDetectorOptions.Builder()
-        //     .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE)
-        //     .build();
-        detector = FirebaseVision.getInstance().getVisionBarcodeDetector();
+//         Note that if you know which format of barcode your app is dealing with, detection will be
+//         faster to specify the supported barcode formats one by one, e.g.
+        detector = FirebaseVision.getInstance().getVisionBarcodeDetector( new FirebaseVisionBarcodeDetectorOptions.Builder()
+                .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_DATA_MATRIX)
+                .build());
     }
 
     public BarcodeScanningProcessor(FirebaseVisionBarcodeDetector detector) {

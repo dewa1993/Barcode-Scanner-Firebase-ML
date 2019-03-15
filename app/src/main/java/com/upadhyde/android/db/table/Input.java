@@ -1,4 +1,4 @@
-package com.upadhyde.android.db;
+package com.upadhyde.android.db.table;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -12,11 +12,11 @@ public class Input {
 
     @NonNull
     @PrimaryKey
-    @ColumnInfo(name = "plantId")
-    private long plantId;
-
     @ColumnInfo(name = "deliveryNo")
     private long deliveryNo;
+
+    @ColumnInfo(name = "plantId")
+    private long plantId;
 
     @ColumnInfo(name = "deliveryType")
     private String deliveryType;

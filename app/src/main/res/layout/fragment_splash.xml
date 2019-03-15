@@ -16,8 +16,8 @@
           app:layout_constraintStart_toStartOf="parent"
           tools:src="@drawable/logo_syngenta"
           app:layout_constraintBottom_toTopOf="@+id/btn_permission"
-          android:layout_width="100dp"
-          android:layout_height="100dp" />
+          android:layout_width="0dp"
+          android:layout_height="0dp" />
 
 
       <Button

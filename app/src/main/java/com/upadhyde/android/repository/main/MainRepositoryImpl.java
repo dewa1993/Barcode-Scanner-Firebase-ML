@@ -3,8 +3,9 @@ package com.upadhyde.android.repository.main;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.upadhyde.android.db.Input;
+import com.upadhyde.android.db.table.Input;
 import com.upadhyde.android.db.dao.ScannerDao;
+import com.upadhyde.android.db.table.Output;
 import com.upadhyde.android.repository.helper.ResourcesResponse;
 import com.upadhyde.android.utils.AppExecutors;
 import com.upadhyde.android.utils.ReaderUtils;
@@ -20,7 +21,7 @@ public class MainRepositoryImpl implements MainRepository {
     private ScannerDao scannerDao;
 
     @Inject
-    MainRepositoryImpl(AppExecutors appExecutors, ScannerDao scannerDao){
+    MainRepositoryImpl(AppExecutors appExecutors, ScannerDao scannerDao) {
         this.appExecutors = appExecutors;
         this.scannerDao = scannerDao;
     }
@@ -29,10 +30,62 @@ public class MainRepositoryImpl implements MainRepository {
     public LiveData<ResourcesResponse<List<Input>>> getInputList(String inputFile) {
         MutableLiveData<ResourcesResponse<List<Input>>> resourcesResponseMutableLiveData = new MutableLiveData<>();
 
-        appExecutors.getDiskOp().execute(()-> {
+        appExecutors.getDiskOp().execute(() -> {
+
+            List<Input> insertedList = scannerDao.getListOfInput();
+            if (insertedList != null) {
+                resourcesResponseMutableLiveData.postValue(ResourcesResponse.success(insertedList));
+            } else {
+                resourcesResponseMutableLiveData.postValue(ResourcesResponse.error("No data found.", null));
+            }
+
+        });
+        return resourcesResponseMutableLiveData;
+    }
+
+    @Override
+    public LiveData<ResourcesResponse<Boolean>> saveOutput(Output output) {
+
+        MutableLiveData<ResourcesResponse<Boolean>> responseMutableLiveData = new MutableLiveData<>();
+
+        appExecutors.getDiskOp().execute(() -> {
+
+            if (scannerDao.outputFileData(output) > 0)
+                responseMutableLiveData.postValue(ResourcesResponse.success(true));
+            else
+                responseMutableLiveData.postValue(ResourcesResponse.error("Failed", false));
+        });
+
+        return responseMutableLiveData;
+    }
+
+    @Override
+    public LiveData<ResourcesResponse<List<Output>>> getOutputList(long deliveryNo) {
+
+        MutableLiveData<ResourcesResponse<List<Output>>> resourcesResponseMutableLiveData = new MutableLiveData<>();
+
+        appExecutors.getDiskOp().execute(() -> {
+
+            List<Output> outputList = scannerDao.getListOfOutput(deliveryNo);
+            if (outputList != null) {
+                resourcesResponseMutableLiveData.postValue(ResourcesResponse.success(outputList));
+            } else {
+                resourcesResponseMutableLiveData.postValue(ResourcesResponse.error("No Data", null));
+            }
+
+        });
+
+        return resourcesResponseMutableLiveData;
+    }
+
+
+    @Override
+    public LiveData<ResourcesResponse<Boolean>> putFileData(String[] source) {
+
+        MutableLiveData<ResourcesResponse<Boolean>> responseMutableLiveData = new MutableLiveData<>();
+        appExecutors.getDiskOp().execute(() -> {
             List<Input> inputStream = new ArrayList<>();
-            String[] source =   ReaderUtils.readFile(inputFile);
-            if(source != null){
+            if (source != null) {
                 for (String inputSource : source) {
                     Input input = new Input();
                     String temp[] = inputSource.split("\\|");
@@ -55,18 +108,14 @@ public class MainRepositoryImpl implements MainRepository {
                         inputStream.add(input);
                     }
                 }
-            }else {
-                resourcesResponseMutableLiveData.postValue(ResourcesResponse.error("No data found.", null));
+            } else {
+                responseMutableLiveData.postValue(ResourcesResponse.error("No data found.", false));
             }
             scannerDao.inputFileData(inputStream);
-            List<Input> insertedList = scannerDao.getListOfInput();
-            if(insertedList != null){
-                resourcesResponseMutableLiveData.postValue(ResourcesResponse.success(insertedList));
-            }else {
-                resourcesResponseMutableLiveData.postValue(ResourcesResponse.error("No data found.", null));
-            }
+            responseMutableLiveData.postValue(ResourcesResponse.success(true));
 
         });
-        return resourcesResponseMutableLiveData;
+
+        return responseMutableLiveData;
     }
 }

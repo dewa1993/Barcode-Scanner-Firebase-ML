@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.upadhyde.android.databinding.AdapterInputListBinding;
-import com.upadhyde.android.db.Input;
+import com.upadhyde.android.db.table.Input;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ public class InputListRecyclerAdapter extends RecyclerView.Adapter<InputListRecy
         this.inputs = inputList;
         this.inputItemClick = inputItemClick;
     }
-
 
     @NonNull
     @Override
@@ -58,12 +57,12 @@ public class InputListRecyclerAdapter extends RecyclerView.Adapter<InputListRecy
 
         @Override
         public void onClick(View v) {
-            inputItemClick.itemClick();
+            inputItemClick.itemClick(inputs.get(getAdapterPosition()));
         }
     }
 
     public interface InputItemClick {
-        void itemClick();
+        void itemClick(Input input);
     }
 
 }

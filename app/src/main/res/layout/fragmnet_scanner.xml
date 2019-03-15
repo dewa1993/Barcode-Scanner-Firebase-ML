@@ -1,28 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.upadhyde.android.barcodescannerutil.common.CameraSourcePreview
-            android:id="@+id/preview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Description"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_delivery_no"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.upadhyde.android.barcodescannerutil.common.GraphicOverlay
-                android:id="@+id/barcodeOverlay"
+        <TextView
+            android:id="@+id/tv_plant_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description"
+            android:text="Plant no:" />
+
+        <TextView
+            android:id="@+id/tv_plant_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="4750"
+            app:layout_constraintStart_toEndOf="@+id/tv_plant_no"
+            app:layout_constraintTop_toTopOf="@+id/tv_plant_no" />
+
+
+        <TextView
+            android:id="@+id/tv_delivery_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_delivery_no_data"
+            app:layout_constraintTop_toTopOf="@+id/tv_delivery_no_data"
+            android:text="Delivery No:" />
+
+        <TextView
+            android:id="@+id/tv_delivery_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="1215215151" />
+
+        <TextView
+            android:id="@+id/tv_delivery_item_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Delivery Item No:"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tv_delivery_item_no_data"
+            app:layout_constraintTop_toTopOf="@+id/tv_delivery_item_no_data" />
+
+        <TextView
+            android:id="@+id/tv_delivery_item_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery_no_data" />
+
+        <TextView
+            android:id="@+id/tv_material_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:text="Material No."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_plant_no" />
+
+
+        <TextView
+            android:id="@+id/tv_material_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="M56421"
+            app:layout_constraintStart_toEndOf="@+id/tv_material_no"
+            app:layout_constraintTop_toTopOf="@+id/tv_material_no" />
+
+        <TextView
+            android:id="@+id/tv_batch_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Batch Item No."
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_material_no" />
+
+        <TextView
+            android:id="@+id/tv_batch_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="5656456243"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintStart_toEndOf="@+id/tv_batch_no"
+            app:layout_constraintTop_toTopOf="@+id/tv_batch_no" />
+
+        <TextView
+            android:id="@+id/tv_fif0_batch_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_city_data"
+            android:text="456565656" />
+
+        <TextView
+            android:id="@+id/tv_fif0_batch_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tv_fif0_batch_no_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_city_data"
+            android:text="FIFO Batch No." />
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tv_city_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery_item_no"
+            android:text="City:" />
+        <TextView
+            android:id="@+id/tv_city_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery_item_no_data"
+            android:text="Nagpur" />
+
+        <RelativeLayout
+            android:id="@+id/rl_scanner"
+            app:layout_constraintTop_toBottomOf="@+id/tv_batch_no"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/rv_out_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="350dp">
+
+            <com.upadhyde.android.barcodescannerutil.common.CameraSourcePreview
+                android:id="@+id/preview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
 
-        </com.upadhyde.android.barcodescannerutil.common.CameraSourcePreview>
+                <com.upadhyde.android.barcodescannerutil.common.GraphicOverlay
+                    android:id="@+id/barcodeOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-        <com.upadhyde.android.barcodescannerutil.OverlayView
-            android:id="@+id/overlayView"
+            </com.upadhyde.android.barcodescannerutil.common.CameraSourcePreview>
+
+            <com.upadhyde.android.barcodescannerutil.OverlayView
+                android:id="@+id/overlayView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_out_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_scanner"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:layout_height="0dp"/>
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
 </layout>
