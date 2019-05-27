@@ -25,11 +25,6 @@ public abstract class AbstractBaseMainFragment<P extends BaseContract,
         attach(context);
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        attach(activity);
-    }
 
     private void attach(Context activityOrContext) {
         uiInteraction = (AbstractBaseMainActivity.UiInteraction) activityOrContext;

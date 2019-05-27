@@ -1,15 +1,14 @@
-package com.upadhyde.android.ui.main.contract;
+package com.upadhyde.android.repository.main;
 
 import android.arch.lifecycle.LiveData;
 
-import com.upadhyde.android.base.BaseContract;
 import com.upadhyde.android.db.table.Input;
 import com.upadhyde.android.db.table.Output;
 import com.upadhyde.android.repository.helper.ResourcesResponse;
 
 import java.util.List;
 
-public interface DashboardContract extends BaseContract {
+public interface MainRepository {
 
     LiveData<ResourcesResponse<List<Input>>> getInputList(String inputFile);
 
@@ -18,5 +17,4 @@ public interface DashboardContract extends BaseContract {
     LiveData<ResourcesResponse<List<Output>>> getOutputList(long deliveryNo );
 
     LiveData<ResourcesResponse<Boolean>> putFileData (String [] data);
-
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Service;
 
+import com.google.firebase.FirebaseApp;
 import com.upadhyde.android.di.component.AppInjector;
 
 import javax.inject.Inject;

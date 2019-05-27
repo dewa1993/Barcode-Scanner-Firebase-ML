@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Android</string>
+    <string name="app_name">Scanner</string>
     <string name="base_url">www.example.com</string>
 </resources>
